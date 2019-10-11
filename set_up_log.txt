@@ -1,0 +1,38 @@
+#set up public key
+ssh-keygen -y -f ~/.ssh/mocjingan3.pem > ~/.ssh/mocjingan3.pub
+ssh-add -K mocjingan3.pem
+
+##############################################################################
+#set up a new envoriment:
+# add stack user
+sudo useradd -s /bin/bash -d /opt/stack -m stack
+echo "stack ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/stack
+sudo su - stack
+script /dev/null #solving the issue of screen can not initiate
+
+# download devstack
+git clone https://opendev.org/openstack/devstack
+cd devstack
+
+# create local.conf
+vi local.conf
+# add the following:
+[[local|localrc]]
+ADMIN_PASSWORD=secret
+DATABASE_PASSWORD=$ADMIN_PASSWORD
+RABBIT_PASSWORD=$ADMIN_PASSWORD
+SERVICE_PASSWORD=$ADMIN_PASSWORD
+
+# start installation
+./stack.sh
+./stack.sh > ~/devstack_jaeger_jager.log 2>&1
+tail -f ~/devstack_jaeger_jager.log
+
+##############################################################################
+adding osprofiler to devstack
+
+install redis
+wget http://download.redis.io/redis-stable.tar.gz
+tar xvzf redis-stable.tar.gz
+cd redis-stable
+make
