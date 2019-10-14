@@ -1,3 +1,11 @@
+##############################################################################
+ip address:
+devstack4
+128.31.24.139
+
+devstack3
+128.31.24.137
+##############################################################################
 #set up public key
 ssh-keygen -y -f ~/.ssh/mocjingan3.pem > ~/.ssh/mocjingan3.pub
 ssh-add -K mocjingan3.pem
@@ -10,6 +18,8 @@ echo "stack ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/stack
 sudo su - stack
 script /dev/null #solving the issue of screen can not initiate
 
+
+##############################################################################
 # download devstack
 git clone https://opendev.org/openstack/devstack
 cd devstack
@@ -23,16 +33,42 @@ DATABASE_PASSWORD=$ADMIN_PASSWORD
 RABBIT_PASSWORD=$ADMIN_PASSWORD
 SERVICE_PASSWORD=$ADMIN_PASSWORD
 
-# start installation
-./stack.sh
-./stack.sh > ~/devstack_jaeger_jager.log 2>&1
-tail -f ~/devstack_jaeger_jager.log
+#enable_plugin panko https://git.openstack.org/openstack/panko
+#enable_plugin ceilometer https://git.openstack.org/openstack/ceilometer
+#enable_plugin osprofiler https://git.openstack.org/openstack/osprofiler
+
+enable_plugin osprofiler https://opendev.org/openstack/osprofiler master
+OSPROFILER_COLLECTOR=redis
+OSPROFILER_TRACE_SQLALCHEMY=False
+OSPROFILER_HMAC_KEYS=SECRET_KEY
 
 ##############################################################################
-adding osprofiler to devstack
+# start installation
+./stack.sh > ~/devstack_jaeger_jager.log 2>&1
+tail -f ~/devstack.log
 
-install redis
-wget http://download.redis.io/redis-stable.tar.gz
-tar xvzf redis-stable.tar.gz
-cd redis-stable
-make
+##############################################################################
+# rc file for admin, address might be different
+
+export OS_AUTH_URL=http://192.168.0.4/identity
+export OS_PROJECT_ID=0e62d553b3864153843caf5e4536a912
+export OS_PROJECT_NAME="admin"
+export OS_USER_DOMAIN_NAME="Default"
+export OS_PROJECT_DOMAIN_ID="default"
+export OS_USERNAME="admin"
+export OS_PASSWORD="secret"
+export OS_REGION_NAME="RegionOne"
+export OS_INTERFACE=public
+export OS_IDENTITY_API_VERSION=3
+export OSPROFILER_CONNECTION_STRING=redis://127.0.0.1:6379
+
+##############################################################################
+grep -Rinw /opt/stack/ -e '\[osprofiler\]'
+find /etc -name "osprofiler"
+
+##############################################################################
+use osprofiler
+openstack --os-profile=SECRET_KEY image list
+
+osprofiler trace show --html 35776e83-f74e-47cd-85af-ae37675fe193
+##############################################################################
