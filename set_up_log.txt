@@ -8,7 +8,7 @@ devstack3
 ##############################################################################
 #set up public key
 ssh-keygen -y -f ~/.ssh/mocjingan3.pem > ~/.ssh/mocjingan3.pub
-ssh-add -K mocjingan3.pem
+ssh-add -K ~/.ssh/mocjingan3.pem
 
 ##############################################################################
 #set up a new envoriment:
@@ -45,13 +45,13 @@ OSPROFILER_HMAC_KEYS=SECRET_KEY
 ##############################################################################
 # start installation
 ./stack.sh > ~/devstack_jaeger_jager.log 2>&1
-tail -f ~/devstack.log
+tail -f ~/devstack_jaeger_jager.log
 
 ##############################################################################
 # rc file for admin, address might be different
 
-export OS_AUTH_URL=http://192.168.0.4/identity
-export OS_PROJECT_ID=0e62d553b3864153843caf5e4536a912
+export OS_AUTH_URL=http://192.168.0.6/identity
+export OS_PROJECT_ID=07e51b34822f4d4b81038fad3217bfda
 export OS_PROJECT_NAME="admin"
 export OS_USER_DOMAIN_NAME="Default"
 export OS_PROJECT_DOMAIN_ID="default"
@@ -65,6 +65,7 @@ export OSPROFILER_CONNECTION_STRING=redis://127.0.0.1:6379
 ##############################################################################
 grep -Rinw /opt/stack/ -e '\[osprofiler\]'
 find /etc -name "osprofiler"
+sudo grep -n -r "profiler" /opt/stack/glance
 
 ##############################################################################
 use osprofiler
@@ -72,3 +73,15 @@ openstack --os-profile=SECRET_KEY image list
 
 osprofiler trace show --html 35776e83-f74e-47cd-85af-ae37675fe193
 ##############################################################################
+
+osprofiler trace list --connection-string jaeger://localhost:6831
+
+/opt/stack/glance/.zuul.yaml
+/opt/stack/glance/glance/opts
+/opt/stack/glance/glance/common/wsgi.py
+/opt/stack/glance/glance/cmd/registry.py
+/opt/stack/glance/glance/cmd/api
+/opt/stack/glance/etc/glance-registry.conf
+
+oslo.messaging--->RPG
+WsgiMiddleware--->API
