@@ -60,8 +60,10 @@ export OS_PASSWORD="secret"
 export OS_REGION_NAME="RegionOne"
 export OS_INTERFACE=public
 export OS_IDENTITY_API_VERSION=3
-export OSPROFILER_CONNECTION_STRING=redis://127.0.0.1:6379
+#export OSPROFILER_CONNECTION_STRING=redis://127.0.0.1:6379
+export OSPROFILER_CONNECTION_STRING=jaeger://localhost:6831
 
+connection_string = jaeger://localhost:6831
 ##############################################################################
 grep -Rinw /opt/stack/ -e '\[osprofiler\]'
 find /etc -name "osprofiler"
@@ -70,10 +72,13 @@ sudo grep -n -r "profiler" /opt/stack/glance
 ##############################################################################
 use osprofiler
 openstack --os-profile=SECRET_KEY image list
+openstack --os-profile Devstack1 image list
 
 glance --profile SECRET_KEY image-list
+glance --profile Devstack1 image-list
 
-osprofiler trace show --html 35776e83-f74e-47cd-85af-ae37675fe193
+osprofiler trace show --connection-string redis://127.0.0.1:6379 --html 1266d14b-5529-4aad-8b3b-ab9fbb5e6fa1
+osprofiler trace show --connection-string redis://127.0.0.1:6379 --html 
 ##############################################################################
 
 osprofiler trace list --connection-string jaeger://localhost:6831
@@ -87,3 +92,62 @@ osprofiler trace list --connection-string jaeger://localhost:6831
 
 oslo.messaging--->RPG
 WsgiMiddleware--->API
+
+from openstack_dashboard.contrib.developer.profiler import api as profiler
+
+[ERROR] /opt/stack/devstack/functions-common:273 Support for f29 is incomplete: no support for docker.io installation Error on exit
+
+sudo systemctl restart devstack@*
+
+##############################################################################
+install docker:
+sudo dnf -y install dnf-plugins-core
+sudo dnf config-manager \
+    --add-repo \
+    https://download.docker.com/linux/fedora/docker-ce.repo
+
+sudo dnf install docker-ce docker-ce-cli containerd.io
+
+sudo systemctl start docker
+
+sudo docker run hello-world
+##############################################################################
+install jaeger all in one:
+sudo docker run -d --name jaeger \
+  -e COLLECTOR_ZIPKIN_HTTP_PORT=9411 \
+  -p 5775:5775/udp \
+  -p 6831:6831/udp \
+  -p 6832:6832/udp \
+  -p 5778:5778 \
+  -p 16686:16686 \
+  -p 14268:14268 \
+  -p 9411:9411 \
+  jaegertracing/all-in-one:1.14
+##############################################################################
+patch:
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+cd ~/
+source devstack/openrc admin admin
+openstack quota set admin --instances 20
+
+git clone git@github.com:docc-lab/tracing-pythia
+
+if [[ $(grep USE_PYTHON3 ~/devstack/local.conf) ]]
+then
+    mypip=pip3
+else
+    mypip=pip
+fi
+
+for project in "osprofiler" "osc_lib" "python-openstackclient" "nova" "oslo.messaging"
+do
+    cd ~/
+    rm -rf ~/$project
+    git clone git@github.com:docc-lab/$project
+    cd ~/$project
+    sudo $mypip install --force-reinstall --no-deps -U .
+done
+
+sudo systemctl restart devstack@*
+
+sudo systemctl restart devstack@g-api.service
