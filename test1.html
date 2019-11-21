@@ -1,0 +1,684 @@
+<!doctype html>
+<html ng-app="app">
+
+<head>
+    <style>
+        .trace {
+            min-width: 900px;
+            width: 100%;
+        }
+
+        .trace tr:hover {
+            background-color: #D9EDF7 !important;
+        }
+
+        .trace tr td {
+            width: 14%;
+            white-space: nowrap;
+            padding: 2px;
+            border-right: 1px solid #EEE;
+        }
+
+        .trace tr td.details {
+            width: 10%;
+            padding-right: 20px;
+        }
+
+        .trace.cursor_pointer_on_hover {
+            cursor: pointer;
+        }
+
+        .trace .level {
+            width: 10%;
+            font-weight: bold;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .duration {
+            width: 25px;
+            margin: 0px;
+            padding: 0px;
+            background-color: #C6EFF3;
+            border-radius: 4px;
+            font-size: 10px;
+        }
+
+        .duration div {
+            padding-top: 4px;
+            padding-bottom: 4px;
+            text-align: center;
+        }
+
+        dl {
+            margin: 5px 0px;
+        }
+
+        .hljs {
+            white-space: pre;
+            word-wrap: normal;
+        }
+
+        .hljs.wrapped {
+            white-space: pre-wrap;
+        }
+
+        .toggle-button {
+            margin-top: -7px;
+        }
+
+    </style>
+    <script>
+        var static_files = false;
+        if (static_files){
+            document.write('<link rel="stylesheet" href="/libs/bootstrap.min.css">');
+            document.write('<link rel="stylesheet" href="/libs/github.min.css">');
+            document.write('<script type="text/javascript" src="/libs/angular.min.js"><\/script>');
+            document.write('<script type="text/javascript" src="/libs/ui-bootstrap-tpls-2.3.1.min.js"><\/script>');
+            document.write('<script type="text/javascript" src="/libs/highlight.min.js"><\/script>');
+            document.write('<script type="text/javascript" src="/libs/angular-highlightjs.min.js"><\/script>');
+            document.write('<script type="text/javascript" src="/libs/angular-ui-tree.min.js"><\/script>');
+            document.write('<script type="text/javascript" src="/libs/angular-ui-tree-filter.js"><\/script>');
+        }
+        else{
+            document.write('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">');
+            document.write('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/github.min.css">');
+            document.write('<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.min.js"><\/script>');
+            document.write('<script type="text/javascript" src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.3.1.min.js"><\/script>');
+            document.write('<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"><\/script>');
+            document.write('<script type="text/javascript" src="https://pc035860.github.io/angular-highlightjs/angular-highlightjs.min.js"><\/script>');
+            document.write('<script type="text/javascript" src="https://cdn.rawgit.com/angular-ui-tree/angular-ui-tree/master/dist/angular-ui-tree.min.js"><\/script>');
+            document.write('<script type="text/javascript" src="https://cdn.rawgit.com/EE/angular-ui-tree-filter/master/dist/angular-ui-tree-filter.js"><\/script>');
+        }
+    </script>
+</head>
+
+<body>
+    <script>
+        (function(angular) {
+            'use strict';
+
+            var OSProfilerData = {
+    "info": {
+        "name": "total",
+        "started": 0,
+        "finished": 564,
+        "last_trace_started": 553
+    },
+    "children": [
+        {
+            "info": {
+                "name": "wsgi",
+                "project": "keystone_profiler",
+                "service": "public",
+                "host": "devstack9",
+                "meta.raw_payload.wsgi-start": {
+                    "name": "wsgi-start",
+                    "base_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
+                    "trace_id": "32958378-d8a0-4772-8880-897bde01252c",
+                    "parent_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
+                    "timestamp": "2019-11-21T03:39:43.426592",
+                    "info": {
+                        "request": {
+                            "path": "/identity/",
+                            "query": "",
+                            "method": "GET",
+                            "scheme": "http"
+                        },
+                        "tracepoint_id": "/identity/:GET",
+                        "host": "devstack9",
+                        "thread_id": 139736169881856,
+                        "pid": 25118
+                    },
+                    "project": "keystone_profiler",
+                    "service": "public"
+                },
+                "started": 0,
+                "meta.raw_payload.wsgi-stop": {
+                    "name": "wsgi-stop",
+                    "base_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
+                    "trace_id": "32958378-d8a0-4772-8880-897bde01252c",
+                    "parent_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
+                    "timestamp": "2019-11-21T03:39:43.433072",
+                    "info": {
+                        "host": "devstack9"
+                    },
+                    "project": "keystone_profiler",
+                    "service": "public"
+                },
+                "finished": 6,
+                "exception": "None"
+            },
+            "trace_id": "32958378-d8a0-4772-8880-897bde01252c",
+            "parent_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
+            "tracepoint_id": "/identity/:GET",
+            "children": []
+        },
+        {
+            "info": {
+                "name": "wsgi",
+                "project": "keystone_profiler",
+                "service": "public",
+                "host": "devstack9",
+                "meta.raw_payload.wsgi-stop": {
+                    "name": "wsgi-stop",
+                    "base_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
+                    "trace_id": "b56c4683-b5ec-4c89-9b34-de2cc0e5a381",
+                    "parent_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
+                    "timestamp": "2019-11-21T03:39:43.493975",
+                    "info": {
+                        "host": "devstack9"
+                    },
+                    "project": "keystone_profiler",
+                    "service": "public"
+                },
+                "finished": 67,
+                "exception": "None",
+                "meta.raw_payload.wsgi-start": {
+                    "name": "wsgi-start",
+                    "base_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
+                    "trace_id": "b56c4683-b5ec-4c89-9b34-de2cc0e5a381",
+                    "parent_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
+                    "timestamp": "2019-11-21T03:39:43.440243",
+                    "info": {
+                        "request": {
+                            "path": "/identity/v3/auth/tokens",
+                            "query": "",
+                            "method": "POST",
+                            "scheme": "http"
+                        },
+                        "tracepoint_id": "/identity/v3/auth/tokens:POST",
+                        "host": "devstack9",
+                        "thread_id": 139736169881856,
+                        "pid": 25117
+                    },
+                    "project": "keystone_profiler",
+                    "service": "public"
+                },
+                "started": 13
+            },
+            "trace_id": "b56c4683-b5ec-4c89-9b34-de2cc0e5a381",
+            "parent_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
+            "tracepoint_id": "/identity/v3/auth/tokens:POST",
+            "children": []
+        },
+        {
+            "info": {
+                "name": "wsgi",
+                "project": "glance_wsgi_app",
+                "service": "api",
+                "host": "devstack9",
+                "meta.raw_payload.wsgi-stop": {
+                    "name": "wsgi-stop",
+                    "base_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
+                    "trace_id": "54f9f89c-ed45-4a20-a23a-451d96b64128",
+                    "parent_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
+                    "timestamp": "2019-11-21T03:39:43.967542",
+                    "info": {
+                        "host": "devstack9"
+                    },
+                    "project": "glance_wsgi_app",
+                    "service": "api"
+                },
+                "finished": 540,
+                "exception": "None",
+                "meta.raw_payload.wsgi-start": {
+                    "name": "wsgi-start",
+                    "base_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
+                    "trace_id": "54f9f89c-ed45-4a20-a23a-451d96b64128",
+                    "parent_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
+                    "timestamp": "2019-11-21T03:39:43.511513",
+                    "info": {
+                        "request": {
+                            "path": "/v2/images",
+                            "query": "limit=20&sort_key=name&sort_dir=asc",
+                            "method": "GET",
+                            "scheme": "http"
+                        },
+                        "tracepoint_id": "/v2/images:GET",
+                        "host": "devstack9",
+                        "thread_id": 139626929451264,
+                        "pid": 25120
+                    },
+                    "project": "glance_wsgi_app",
+                    "service": "api"
+                },
+                "started": 84
+            },
+            "trace_id": "54f9f89c-ed45-4a20-a23a-451d96b64128",
+            "parent_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
+            "tracepoint_id": "/v2/images:GET",
+            "children": [
+                {
+                    "info": {
+                        "name": "wsgi",
+                        "project": "keystone_profiler",
+                        "service": "public",
+                        "host": "devstack9",
+                        "meta.raw_payload.wsgi-stop": {
+                            "name": "wsgi-stop",
+                            "base_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
+                            "trace_id": "d5d10d2d-7d16-42f7-942f-cb6cfb5564a4",
+                            "parent_id": "54f9f89c-ed45-4a20-a23a-451d96b64128",
+                            "timestamp": "2019-11-21T03:39:43.531685",
+                            "info": {
+                                "host": "devstack9"
+                            },
+                            "project": "keystone_profiler",
+                            "service": "public"
+                        },
+                        "finished": 105,
+                        "exception": "None",
+                        "meta.raw_payload.wsgi-start": {
+                            "name": "wsgi-start",
+                            "base_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
+                            "trace_id": "d5d10d2d-7d16-42f7-942f-cb6cfb5564a4",
+                            "parent_id": "54f9f89c-ed45-4a20-a23a-451d96b64128",
+                            "timestamp": "2019-11-21T03:39:43.527601",
+                            "info": {
+                                "request": {
+                                    "path": "/identity/",
+                                    "query": "",
+                                    "method": "GET",
+                                    "scheme": "http"
+                                },
+                                "tracepoint_id": "/identity/:GET",
+                                "host": "devstack9",
+                                "thread_id": 139736169881856,
+                                "pid": 25118
+                            },
+                            "project": "keystone_profiler",
+                            "service": "public"
+                        },
+                        "started": 101
+                    },
+                    "trace_id": "d5d10d2d-7d16-42f7-942f-cb6cfb5564a4",
+                    "parent_id": "54f9f89c-ed45-4a20-a23a-451d96b64128",
+                    "tracepoint_id": "/identity/:GET",
+                    "children": []
+                },
+                {
+                    "info": {
+                        "name": "wsgi",
+                        "project": "keystone_profiler",
+                        "service": "public",
+                        "host": "devstack9",
+                        "meta.raw_payload.wsgi-start": {
+                            "name": "wsgi-start",
+                            "base_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
+                            "trace_id": "f6ba823d-36c3-46ff-b239-7bf18efe9847",
+                            "parent_id": "54f9f89c-ed45-4a20-a23a-451d96b64128",
+                            "timestamp": "2019-11-21T03:39:43.539343",
+                            "info": {
+                                "request": {
+                                    "path": "/identity/v3/auth/tokens",
+                                    "query": "",
+                                    "method": "POST",
+                                    "scheme": "http"
+                                },
+                                "tracepoint_id": "/identity/v3/auth/tokens:POST",
+                                "host": "devstack9",
+                                "thread_id": 139736169881856,
+                                "pid": 25117
+                            },
+                            "project": "keystone_profiler",
+                            "service": "public"
+                        },
+                        "started": 112,
+                        "meta.raw_payload.wsgi-stop": {
+                            "name": "wsgi-stop",
+                            "base_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
+                            "trace_id": "f6ba823d-36c3-46ff-b239-7bf18efe9847",
+                            "parent_id": "54f9f89c-ed45-4a20-a23a-451d96b64128",
+                            "timestamp": "2019-11-21T03:39:43.736575",
+                            "info": {
+                                "host": "devstack9"
+                            },
+                            "project": "keystone_profiler",
+                            "service": "public"
+                        },
+                        "finished": 309,
+                        "exception": "None"
+                    },
+                    "trace_id": "f6ba823d-36c3-46ff-b239-7bf18efe9847",
+                    "parent_id": "54f9f89c-ed45-4a20-a23a-451d96b64128",
+                    "tracepoint_id": "/identity/v3/auth/tokens:POST",
+                    "children": []
+                },
+                {
+                    "info": {
+                        "name": "wsgi",
+                        "project": "keystone_profiler",
+                        "service": "public",
+                        "host": "devstack9",
+                        "meta.raw_payload.wsgi-start": {
+                            "name": "wsgi-start",
+                            "base_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
+                            "trace_id": "59fb1bda-3020-433f-b10d-98752991a514",
+                            "parent_id": "54f9f89c-ed45-4a20-a23a-451d96b64128",
+                            "timestamp": "2019-11-21T03:39:43.748826",
+                            "info": {
+                                "request": {
+                                    "path": "/identity/v3/auth/tokens",
+                                    "query": "",
+                                    "method": "GET",
+                                    "scheme": "http"
+                                },
+                                "tracepoint_id": "/identity/v3/auth/tokens:GET",
+                                "host": "devstack9",
+                                "thread_id": 139736169881856,
+                                "pid": 25118
+                            },
+                            "project": "keystone_profiler",
+                            "service": "public"
+                        },
+                        "started": 322,
+                        "meta.raw_payload.wsgi-stop": {
+                            "name": "wsgi-stop",
+                            "base_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
+                            "trace_id": "59fb1bda-3020-433f-b10d-98752991a514",
+                            "parent_id": "54f9f89c-ed45-4a20-a23a-451d96b64128",
+                            "timestamp": "2019-11-21T03:39:43.812402",
+                            "info": {
+                                "host": "devstack9"
+                            },
+                            "project": "keystone_profiler",
+                            "service": "public"
+                        },
+                        "finished": 385,
+                        "exception": "None"
+                    },
+                    "trace_id": "59fb1bda-3020-433f-b10d-98752991a514",
+                    "parent_id": "54f9f89c-ed45-4a20-a23a-451d96b64128",
+                    "tracepoint_id": "/identity/v3/auth/tokens:GET",
+                    "children": []
+                }
+            ]
+        },
+        {
+            "info": {
+                "name": "wsgi",
+                "project": "glance_wsgi_app",
+                "service": "api",
+                "host": "devstack9",
+                "meta.raw_payload.wsgi-start": {
+                    "name": "wsgi-start",
+                    "base_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
+                    "trace_id": "c8d07ae2-9d8a-4ee2-a88d-46c429713495",
+                    "parent_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
+                    "timestamp": "2019-11-21T03:39:43.979958",
+                    "info": {
+                        "request": {
+                            "path": "/v2/schemas/image",
+                            "query": "",
+                            "method": "GET",
+                            "scheme": "http"
+                        },
+                        "tracepoint_id": "/v2/schemas/image:GET",
+                        "host": "devstack9",
+                        "thread_id": 139626929451264,
+                        "pid": 25119
+                    },
+                    "project": "glance_wsgi_app",
+                    "service": "api"
+                },
+                "started": 553,
+                "meta.raw_payload.wsgi-stop": {
+                    "name": "wsgi-stop",
+                    "base_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
+                    "trace_id": "c8d07ae2-9d8a-4ee2-a88d-46c429713495",
+                    "parent_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
+                    "timestamp": "2019-11-21T03:39:43.990600",
+                    "info": {
+                        "host": "devstack9"
+                    },
+                    "project": "glance_wsgi_app",
+                    "service": "api"
+                },
+                "finished": 564,
+                "exception": "None"
+            },
+            "trace_id": "c8d07ae2-9d8a-4ee2-a88d-46c429713495",
+            "parent_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
+            "tracepoint_id": "/v2/schemas/image:GET",
+            "children": []
+        }
+    ],
+    "stats": {
+        "wsgi": {
+            "count": 7,
+            "duration": 791
+        }
+    }
+};
+
+            angular
+                .module('app', ['ui.bootstrap', 'hljs', 'ui.tree', 'ui.tree-filter'])
+                .config(['$rootScopeProvider', function ($rootScopeProvider) {
+                    $rootScopeProvider.digestTtl(50);
+                }])
+                .config(['hljsServiceProvider', function (hljsServiceProvider) {
+                    hljsServiceProvider.setOptions({
+                        // replace tab with 4 spaces
+                        tabReplace: '    '
+                    });
+                }])
+                .config(['uiTreeFilterSettingsProvider', function (uiTreeFilterSettingsProvider) {
+                    uiTreeFilterSettingsProvider.addresses = [
+                        'info.name',
+                        'info.project',
+                        'info.service',
+                        'info.host'
+                    ];
+                    uiTreeFilterSettingsProvider.descendantCollection = 'children';
+                }])
+                .controller('ProfilerController', ProfilerController)
+                .controller('ModalInstanceController', ModalInstanceController);
+
+            // Inject services
+            ProfilerController.$inject = ['$filter', '$uibModal'];
+            ModalInstanceController.$inject = ['$uibModalInstance', 'info'];
+
+            function ProfilerController($filter, $uibModal) {
+                // NOTE(tovin07): Bind this to vm. This is controller as and vm syntax.
+                // This style is mainstream now. It replaces $scope style.
+                // Ref: https://johnpapa.net/angularjss-controller-as-and-the-vm-variable/
+                var vm = this;
+
+                vm.filter = $filter('uiTreeFilter');
+
+                var converInput = function(input, level) {
+                    level = (level) ? level : 0;
+                    input.level = level;
+                    input.is_leaf = !input.children.length;
+
+                    for (var i = 0; i < input.children.length; i++) {
+                        converInput(input.children[i], level + 1);
+                    }
+                    return input;
+                };
+
+                vm.isLastTrace = function(started) {
+                    if (started >=0 && started == vm.tree[0].info.last_trace_started) {
+                        return true;
+                    }
+                    return false;
+                };
+
+                vm.getWidth = function(data) {
+                    var fullDuration = vm.tree[0].info.finished;
+                    var duration = (data.info.finished - data.info.started) * 100.0 / fullDuration;
+                    return (duration >= 0.5) ? duration : 0.5;
+                };
+
+                vm.getStarted = function(data) {
+                    var fullDuration = vm.tree[0].info.finished;
+                    return data.info.started * 100.0 / fullDuration;
+                };
+
+                vm.isImportance = function(data) {
+                    return ['total', 'wsgi', 'rpc'].indexOf(data.info.name) != -1;
+                };
+
+                vm.display = function(data) {
+                    $uibModal.open({
+                        animation: true,
+                        templateUrl: 'modal_renderer.html',
+                        controller: 'ModalInstanceController',
+                        controllerAs: 'modal',
+                        size: 'lg',
+                        resolve: {
+                            info: function() {
+                                return angular.copy(data.info);
+                            }
+                        }
+                    });
+                };
+
+                vm.tree = [converInput(OSProfilerData)];
+            }
+
+            function ModalInstanceController($uibModalInstance, info){
+                var modal = this;
+                var metadata = {};
+                angular.forEach(info, function(value, key) {
+                    var parts = key.split('.');
+                    var metaText = 'meta';
+                    if (parts[0] == metaText) {
+                        if (parts.length == 2) {
+                            this[parts[1]] = value;
+                        } else {
+                            var groupName = parts[1];
+                            if (!(groupName in this)) {
+                                this[groupName] = {};
+                            }
+                            // Plus 2 for 2 dots such as: meta.raw_payload.heat.wsgi-start
+                            var index = metaText.length + parts[1].length + 2;
+                            this[groupName][key.slice(index)] = value;
+                        }
+                    };
+                }, metadata);
+
+                info.duration = info.finished - info.started;
+                // Escape single-quotes to prevent angular parse lexerr
+                info.metadata = JSON.stringify(metadata, null, 4).replace(/'/g, "\\'");
+
+                // Bind to view model
+                modal.info = info;
+
+                modal.columns = [
+                    ['name', 'project', 'service', 'host'],
+                    ['started', 'finished', 'duration', 'exception']
+                ];
+
+                modal.toggleWrap = function() {
+                    var element = angular.element(document.querySelector('code.hljs'));
+
+                    var wrappedClass = 'wrapped';
+                    var isWrapped = element.hasClass(wrappedClass);
+                    if (isWrapped) {
+                        element.removeClass(wrappedClass);
+                    } else {
+                        element.addClass(wrappedClass);
+                    }
+                };
+
+                modal.close = function() {
+                    $uibModalInstance.dismiss('close');
+                };
+            }
+        })(window.angular);
+    </script>
+    <!--Tree item template-->
+    <script type="text/ng-template" id="tree_item_renderer.html">
+        <div ng-init="hide_children=false">
+            <table class="trace cursor_pointer_on_hover">
+                <tr ng-class="{'bg-success': vm.isLastTrace(data.info.started)}">
+                    <td class="level" style="padding-left: {{::data.level * 5}}px;">
+                        <button type="button" class="btn btn-default btn-xs" ng-disabled="data.is_leaf" ng-click="hide_children=!hide_children">
+                            <span class="glyphicon glyphicon-{{(data.is_leaf) ? 'cloud' : ((hide_children) ? 'plus': 'minus')}}"></span>
+                            {{::data.level || 0}}
+                        </button>
+                    </td>
+                    <td ng-click="vm.display(data)" class="text-center">
+                        <div class="duration" style="width: {{vm.getWidth(data)}}%; margin-left: {{vm.getStarted(data)}}%;">
+                            <div>{{data.info.finished - data.info.started}} ms</div>
+                        </div>
+                    </td>
+                    <td ng-click="vm.display(data)" class="{{vm.isImportance(data) ? 'bold' : ''}} text-right">{{::data.info.name}}</td>
+                    <td ng-click="vm.display(data)">{{::data.info.project || "n/a"}}</td>
+                    <td ng-click="vm.display(data)">{{::data.info.service || "n/a"}}</td>
+                    <td ng-click="vm.display(data)">{{::data.info.host || "n/a"}}</td>
+                    <td class="details">
+                        <a href="#" ng-click="vm.display(data)">Details</a>
+                    </td>
+                </tr>
+            </table>
+            <div ui-tree-nodes ng-model="data.children" ng-hide="hide_children">
+                <div ui-tree-node ng-repeat="data in data.children" ng-include="'tree_item_renderer.html'" ng-hide="!vm.filter(data, vm.filterPattern)"></div>
+            </div>
+        </div>
+    </script>
+    <!--Modal template-->
+    <script type="text/ng-template" id="modal_renderer.html">
+        <div class="modal-header">
+            <h3 class="text-center">
+                <strong>Trace Point Details</strong>
+                <span class="btn btn-default pull-right toggle-button" ng-click="modal.toggleWrap()">Toggle wrap-text</span>
+            </h3>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-6" ng-repeat="cols in modal.columns">
+                    <dl class="dl-horizontal" ng-repeat="column in cols">
+                        <dt class="text-capitalize">{{::column}}</dt>
+                        <dd>{{::modal.info[column]}}</dd>
+                    </dl>
+                </div>
+                <div class="col-md-12">
+                    <!--For metadata only-->
+                    <dl class="dl-horizontal">
+                        <dt class="text-capitalize">metadata</dt>
+                        <dd hljs hljs-language="json" hljs-source="'{{::modal.info.metadata}}'"></dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <span class="btn btn-default" ng-click="modal.close()">Close</span>
+        </div>
+    </script>
+    <!--Body-->
+    <div ng-controller="ProfilerController as vm">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="filterPattern" class="col-md-4 control-label">Span filtering:</label>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" id="filterPattern"
+                        placeholder="Input your regular expression pattern here"
+                        ng-model="vm.filterPattern">
+                </div>
+            </div>
+        </form>
+        <table class="trace">
+            <tr class="bold text-left" style="border-bottom: solid 1px gray;">
+                <td class="level">Levels</td>
+                <td>Duration</td>
+                <td class="text-right">Type</td>
+                <td>Project</td>
+                <td>Service</td>
+                <td>Host</td>
+                <td class="details">Details</td>
+            </tr>
+        </table>
+        <div ui-tree>
+            <div ui-tree-nodes ng-model="vm.tree">
+                <div ui-tree-node ng-repeat="data in vm.tree" ng-include="'tree_item_renderer.html'" ng-hide="!vm.filter(data, vm.filterPattern)"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
