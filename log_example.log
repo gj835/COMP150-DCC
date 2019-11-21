@@ -1,0 +1,107 @@
+devstack@g-api.service[25083]: DEBUG glance.api.middleware.version_negotiation [None req-a80cae7f-b25c-40b2-b279-073e5b5207d0 admin admin] Determining version of request: GET /versions Accept: */* {{(pid=25120) process_request /opt/stack/glance/glance/api/middleware/version_negotiation.py:45}}
+
+	glance-wsgi-api[25120]: DEBUG glance.api.middleware.version_negotiation [None req-a80cae7f-b25c-40b2-b279-073e5b5207d0 admin admin] Determining version of request: GET /versions Accept: */* {{(pid=25120) process_request /opt/stack/glance/glance/api/middleware/version_negotiation.py:45}}
+
+	devstack@g-api.service[25083]: DEBUG glance.api.middleware.version_negotiation [None req-40283ca1-ce92-47c8-b639-fbe66e288023 admin admin] Determining version of request: GET /v2/images Accept: */* {{(pid=25119) process_request /opt/stack/glance/glance/api/middleware/version_negotiation.py:45}}
+
+	glance-wsgi-api[25119]: DEBUG glance.api.middleware.version_negotiation [None req-40283ca1-ce92-47c8-b639-fbe66e288023 admin admin] Determining version of request: GET /v2/images Accept: */* {{(pid=25119) process_request /opt/stack/glance/glance/api/middleware/version_negotiation.py:45}}
+
+	devstack@g-api.service[25083]: DEBUG glance.api.middleware.version_negotiation [None req-40283ca1-ce92-47c8-b639-fbe66e288023 admin admin] Using url versioning {{(pid=25119) process_request /opt/stack/glance/glance/api/middleware/version_negotiation.py:57}}
+
+	glance-wsgi-api[25119]: DEBUG glance.api.middleware.version_negotiation [None req-40283ca1-ce92-47c8-b639-fbe66e288023 admin admin] Using url versioning {{(pid=25119) process_request /opt/stack/glance/glance/api/middleware/version_negotiation.py:57}}
+
+	devstack@g-api.service[25083]: DEBUG glance.api.middleware.version_negotiation [None req-40283ca1-ce92-47c8-b639-fbe66e288023 admin admin] Matched version: v2 {{(pid=25119) process_request /opt/stack/glance/glance/api/middleware/version_negotiation.py:69}}
+
+	glance-wsgi-api[25119]: DEBUG glance.api.middleware.version_negotiation [None req-40283ca1-ce92-47c8-b639-fbe66e288023 admin admin] Matched version: v2 {{(pid=25119) process_request /opt/stack/glance/glance/api/middleware/version_negotiation.py:69}}
+
+	devstack@g-api.service[25083]: DEBUG glance.api.middleware.version_negotiation [None req-40283ca1-ce92-47c8-b639-fbe66e288023 admin admin] new path /v2/images {{(pid=25119) process_request /opt/stack/glance/glance/api/middleware/version_negotiation.py:70}}
+
+	glance-wsgi-api[25119]: DEBUG glance.api.middleware.version_negotiation [None req-40283ca1-ce92-47c8-b639-fbe66e288023 admin admin] new path /v2/images {{(pid=25119) process_request /opt/stack/glance/glance/api/middleware/version_negotiation.py:70}}
+
+devstack@keystone.service[25081]: DEBUG keystone.server.flask.request_processing.middleware.auth_context [None req-9367830c-589b-4ef8-9afc-de4e992e04a3 service glance] RBAC: auth_context: {'token': <TokenModel (audit_id=Gy4fiBkBQcayGBoHMQfbcA, audit_chain_id=['Gy4fiBkBQcayGBoHMQfbcA']) at 0x7f16d25aee90>, 'domain_id': None, 'trust_id': None, 'trustor_id': None, 'trustee_id': None, 'domain_name': None, 'group_ids': [], 'user_id': '434ca6670b874f92b7466bfeab77d42e', 'user_domain_id': 'default', 'system_scope': None, 'project_id': 'e1f033ac5bd04c2c9f9e2e08168ca48a', 'project_domain_id': 'default', 'roles': ['service'], 'is_admin_project': True, 'service_user_id': None, 'service_user_domain_id': None, 'service_project_id': None, 'service_project_domain_id': None, 'service_roles': []} {{(pid=25117) fill_context /opt/stack/keystone/keystone/server/flask/request_processing/middleware/auth_context.py:472}}
+
+	keystone-wsgi-public[25117]: DEBUG keystone.server.flask.request_processing.middleware.auth_context [None req-9367830c-589b-4ef8-9afc-de4e992e04a3 service glance] RBAC: auth_context: {'token': <TokenModel (audit_id=Gy4fiBkBQcayGBoHMQfbcA, audit_chain_id=['Gy4fiBkBQcayGBoHMQfbcA']) at 0x7f16d25aee90>, 'domain_id': None, 'trust_id': None, 'trustor_id': None, 'trustee_id': None, 'domain_name': None, 'group_ids': [], 'user_id': '434ca6670b874f92b7466bfeab77d42e', 'user_domain_id': 'default', 'system_scope': None, 'project_id': 'e1f033ac5bd04c2c9f9e2e08168ca48a', 'project_domain_id': 'default', 'roles': ['service'], 'is_admin_project': True, 'service_user_id': None, 'service_user_domain_id': None, 'service_project_id': None, 'service_project_domain_id': None, 'service_roles': []} {{(pid=25117) fill_context /opt/stack/keystone/keystone/server/flask/request_processing/middleware/auth_context.py:472}}
+
+	devstack@keystone.service[25081]: DEBUG keystone.server.flask.request_processing.req_logging [None req-9367830c-589b-4ef8-9afc-de4e992e04a3 service glance] REQUEST_METHOD: `GET` {{(pid=25117) log_request_info /opt/stack/keystone/keystone/server/flask/request_processing/req_logging.py:27}}
+
+	keystone-wsgi-public[25117]: DEBUG keystone.server.flask.request_processing.req_logging [None req-9367830c-589b-4ef8-9afc-de4e992e04a3 service glance] REQUEST_METHOD: `GET` {{(pid=25117) log_request_info /opt/stack/keystone/keystone/server/flask/request_processing/req_logging.py:27}}
+
+	devstack@keystone.service[25081]: DEBUG keystone.server.flask.request_processing.req_logging [None req-9367830c-589b-4ef8-9afc-de4e992e04a3 service glance] SCRIPT_NAME: `/identity` {{(pid=25117) log_request_info /opt/stack/keystone/keystone/server/flask/request_processing/req_logging.py:28}}
+
+	keystone-wsgi-public[25117]: DEBUG keystone.server.flask.request_processing.req_logging [None req-9367830c-589b-4ef8-9afc-de4e992e04a3 service glance] SCRIPT_NAME: `/identity` {{(pid=25117) log_request_info /opt/stack/keystone/keystone/server/flask/request_processing/req_logging.py:28}}
+
+	devstack@keystone.service[25081]: DEBUG keystone.server.flask.request_processing.req_logging [None req-9367830c-589b-4ef8-9afc-de4e992e04a3 service glance] PATH_INFO: `/v3/auth/tokens` {{(pid=25117) log_request_info /opt/stack/keystone/keystone/server/flask/request_processing/req_logging.py:29}}
+
+	keystone-wsgi-public[25117]: DEBUG keystone.server.flask.request_processing.req_logging [None req-9367830c-589b-4ef8-9afc-de4e992e04a3 service glance] PATH_INFO: `/v3/auth/tokens` {{(pid=25117) log_request_info /opt/stack/keystone/keystone/server/flask/request_processing/req_logging.py:29}}
+
+	devstack@keystone.service[25081]: DEBUG keystone.common.rbac_enforcer.enforcer [None req-9367830c-589b-4ef8-9afc-de4e992e04a3 service glance] RBAC: Authorizing `identity:validate_token()` {{(pid=25117) enforce_call /opt/stack/keystone/keystone/common/rbac_enforcer/enforcer.py:386}}
+
+	keystone-wsgi-public[25117]: DEBUG keystone.common.rbac_enforcer.enforcer [None req-9367830c-589b-4ef8-9afc-de4e992e04a3 service glance] RBAC: Authorizing `identity:validate_token()` {{(pid=25117) enforce_call /opt/stack/keystone/keystone/common/rbac_enforcer/enforcer.py:386}}
+
+	devstack@keystone.service[25081]: DEBUG keystone.common.rbac_enforcer.enforcer [None req-9367830c-589b-4ef8-9afc-de4e992e04a3 service glance] RBAC: Authorization granted {{(pid=25117) enforce_call /opt/stack/keystone/keystone/common/rbac_enforcer/enforcer.py:393}}
+
+	keystone-wsgi-public[25117]: DEBUG keystone.common.rbac_enforcer.enforcer [None req-9367830c-589b-4ef8-9afc-de4e992e04a3 service glance] RBAC: Authorization granted {{(pid=25117) enforce_call /opt/stack/keystone/keystone/common/rbac_enforcer/enforcer.py:393}}
+
+devstack@g-api.service[25083]: DEBUG glance.api.middleware.version_negotiation [None req-a80cae7f-b25c-40b2-b279-073e5b5207d0 admin admin] Determining version of request: GET /v2/schemas/image Accept: */* {{(pid=25120) process_request /opt/stack/glance/glance/api/middleware/version_negotiation.py:45}}
+
+	glance-wsgi-api[25120]: DEBUG glance.api.middleware.version_negotiation [None req-a80cae7f-b25c-40b2-b279-073e5b5207d0 admin admin] Determining version of request: GET /v2/schemas/image Accept: */* {{(pid=25120) process_request /opt/stack/glance/glance/api/middleware/version_negotiation.py:45}}
+
+	devstack@g-api.service[25083]: DEBUG glance.api.middleware.version_negotiation [None req-a80cae7f-b25c-40b2-b279-073e5b5207d0 admin admin] Using url versioning {{(pid=25120) process_request /opt/stack/glance/glance/api/middleware/version_negotiation.py:57}}
+
+	glance-wsgi-api[25120]: DEBUG glance.api.middleware.version_negotiation [None req-a80cae7f-b25c-40b2-b279-073e5b5207d0 admin admin] Using url versioning {{(pid=25120) process_request /opt/stack/glance/glance/api/middleware/version_negotiation.py:57}}
+
+	devstack@g-api.service[25083]: DEBUG glance.api.middleware.version_negotiation [None req-a80cae7f-b25c-40b2-b279-073e5b5207d0 admin admin] Matched version: v2 {{(pid=25120) process_request /opt/stack/glance/glance/api/middleware/version_negotiation.py:69}}
+
+	glance-wsgi-api[25120]: DEBUG glance.api.middleware.version_negotiation [None req-a80cae7f-b25c-40b2-b279-073e5b5207d0 admin admin] Matched version: v2 {{(pid=25120) process_request /opt/stack/glance/glance/api/middleware/version_negotiation.py:69}}
+
+	devstack@g-api.service[25083]: DEBUG glance.api.middleware.version_negotiation [None req-a80cae7f-b25c-40b2-b279-073e5b5207d0 admin admin] new path /v2/schemas/image {{(pid=25120) process_request /opt/stack/glance/glance/api/middleware/version_negotiation.py:70}}
+
+	glance-wsgi-api[25120]: DEBUG glance.api.middleware.version_negotiation [None req-a80cae7f-b25c-40b2-b279-073e5b5207d0 admin admin] new path /v2/schemas/image {{(pid=25120) process_request /opt/stack/glance/glance/api/middleware/version_negotiation.py:70}}
+
+	devstack@g-api.service[25083]: DEBUG glance.api.middleware.version_negotiation [None req-b4c047b0-7e79-4356-9976-f3f4fb5f60be admin admin] Determining version of request: GET /v2/images Accept: */* {{(pid=25119) process_request /opt/stack/glance/glance/api/middleware/version_negotiation.py:45}}
+
+	devstack@g-api.service[25083]: DEBUG glance.api.middleware.version_negotiation [None req-b4c047b0-7e79-4356-9976-f3f4fb5f60be admin admin] Using url versioning {{(pid=25119) process_request /opt/stack/glance/glance/api/middleware/version_negotiation.py:57}}
+
+	glance-wsgi-api[25119]: DEBUG glance.api.middleware.version_negotiation [None req-b4c047b0-7e79-4356-9976-f3f4fb5f60be admin admin] Determining version of request: GET /v2/images Accept: */* {{(pid=25119) process_request /opt/stack/glance/glance/api/middleware/version_negotiation.py:45}}
+
+	glance-wsgi-api[25119]: DEBUG glance.api.middleware.version_negotiation [None req-b4c047b0-7e79-4356-9976-f3f4fb5f60be admin admin] Using url versioning {{(pid=25119) process_request /opt/stack/glance/glance/api/middleware/version_negotiation.py:57}}
+
+	devstack@g-api.service[25083]: DEBUG glance.api.middleware.version_negotiation [None req-b4c047b0-7e79-4356-9976-f3f4fb5f60be admin admin] Matched version: v2 {{(pid=25119) process_request /opt/stack/glance/glance/api/middleware/version_negotiation.py:69}}
+
+	glance-wsgi-api[25119]: DEBUG glance.api.middleware.version_negotiation [None req-b4c047b0-7e79-4356-9976-f3f4fb5f60be admin admin] Matched version: v2 {{(pid=25119) process_request /opt/stack/glance/glance/api/middleware/version_negotiation.py:69}}
+
+	devstack@g-api.service[25083]: DEBUG glance.api.middleware.version_negotiation [None req-b4c047b0-7e79-4356-9976-f3f4fb5f60be admin admin] new path /v2/images {{(pid=25119) process_request /opt/stack/glance/glance/api/middleware/version_negotiation.py:70}}
+
+	glance-wsgi-api[25119]: DEBUG glance.api.middleware.version_negotiation [None req-b4c047b0-7e79-4356-9976-f3f4fb5f60be admin admin] new path /v2/images {{(pid=25119) process_request /opt/stack/glance/glance/api/middleware/version_negotiation.py:70}}
+
+devstack@keystone.service[25081]: DEBUG keystone.server.flask.request_processing.middleware.auth_context [None req-3306113e-a07b-4bb2-b98b-a6ce182b9fe8 service glance] RBAC: auth_context: {'token': <TokenModel (audit_id=Gy4fiBkBQcayGBoHMQfbcA, audit_chain_id=['Gy4fiBkBQcayGBoHMQfbcA']) at 0x7f16d2346f90>, 'domain_id': None, 'trust_id': None, 'trustor_id': None, 'trustee_id': None, 'domain_name': None, 'group_ids': [], 'user_id': '434ca6670b874f92b7466bfeab77d42e', 'user_domain_id': 'default', 'system_scope': None, 'project_id': 'e1f033ac5bd04c2c9f9e2e08168ca48a', 'project_domain_id': 'default', 'roles': ['service'], 'is_admin_project': True, 'service_user_id': None, 'service_user_domain_id': None, 'service_project_id': None, 'service_project_domain_id': None, 'service_roles': []} {{(pid=25117) fill_context /opt/stack/keystone/keystone/server/flask/request_processing/middleware/auth_context.py:472}}
+
+	keystone-wsgi-public[25117]: DEBUG keystone.server.flask.request_processing.middleware.auth_context [None req-3306113e-a07b-4bb2-b98b-a6ce182b9fe8 service glance] RBAC: auth_context: {'token': <TokenModel (audit_id=Gy4fiBkBQcayGBoHMQfbcA, audit_chain_id=['Gy4fiBkBQcayGBoHMQfbcA']) at 0x7f16d2346f90>, 'domain_id': None, 'trust_id': None, 'trustor_id': None, 'trustee_id': None, 'domain_name': None, 'group_ids': [], 'user_id': '434ca6670b874f92b7466bfeab77d42e', 'user_domain_id': 'default', 'system_scope': None, 'project_id': 'e1f033ac5bd04c2c9f9e2e08168ca48a', 'project_domain_id': 'default', 'roles': ['service'], 'is_admin_project': True, 'service_user_id': None, 'service_user_domain_id': None, 'service_project_id': None, 'service_project_domain_id': None, 'service_roles': []} {{(pid=25117) fill_context /opt/stack/keystone/keystone/server/flask/request_processing/middleware/auth_context.py:472}}
+
+	devstack@keystone.service[25081]: DEBUG keystone.server.flask.request_processing.req_logging [None req-3306113e-a07b-4bb2-b98b-a6ce182b9fe8 service glance] REQUEST_METHOD: `GET` {{(pid=25117) log_request_info /opt/stack/keystone/keystone/server/flask/request_processing/req_logging.py:27}}
+
+	keystone-wsgi-public[25117]: DEBUG keystone.server.flask.request_processing.req_logging [None req-3306113e-a07b-4bb2-b98b-a6ce182b9fe8 service glance] REQUEST_METHOD: `GET` {{(pid=25117) log_request_info /opt/stack/keystone/keystone/server/flask/request_processing/req_logging.py:27}}
+
+	devstack@keystone.service[25081]: DEBUG keystone.server.flask.request_processing.req_logging [None req-3306113e-a07b-4bb2-b98b-a6ce182b9fe8 service glance] SCRIPT_NAME: `/identity` {{(pid=25117) log_request_info /opt/stack/keystone/keystone/server/flask/request_processing/req_logging.py:28}}
+
+	keystone-wsgi-public[25117]: DEBUG keystone.server.flask.request_processing.req_logging [None req-3306113e-a07b-4bb2-b98b-a6ce182b9fe8 service glance] SCRIPT_NAME: `/identity` {{(pid=25117) log_request_info /opt/stack/keystone/keystone/server/flask/request_processing/req_logging.py:28}}
+
+	devstack@keystone.service[25081]: DEBUG keystone.server.flask.request_processing.req_logging [None req-3306113e-a07b-4bb2-b98b-a6ce182b9fe8 service glance] PATH_INFO: `/v3/auth/tokens` {{(pid=25117) log_request_info /opt/stack/keystone/keystone/server/flask/request_processing/req_logging.py:29}}
+
+	keystone-wsgi-public[25117]: DEBUG keystone.server.flask.request_processing.req_logging [None req-3306113e-a07b-4bb2-b98b-a6ce182b9fe8 service glance] PATH_INFO: `/v3/auth/tokens` {{(pid=25117) log_request_info /opt/stack/keystone/keystone/server/flask/request_processing/req_logging.py:29}}
+
+	devstack@keystone.service[25081]: DEBUG keystone.common.fernet_utils [None req-3306113e-a07b-4bb2-b98b-a6ce182b9fe8 service glance] Loaded 2 Fernet keys from /etc/keystone/fernet-keys/, but `[fernet_tokens] max_active_keys = 3`; perhaps there have not been enough key rotations to reach `max_active_keys` yet? {{(pid=25117) load_keys /opt/stack/keystone/keystone/common/fernet_utils.py:289}}
+
+	keystone-wsgi-public[25117]: DEBUG keystone.common.fernet_utils [None req-3306113e-a07b-4bb2-b98b-a6ce182b9fe8 service glance] Loaded 2 Fernet keys from /etc/keystone/fernet-keys/, but `[fernet_tokens] max_active_keys = 3`; perhaps there have not been enough key rotations to reach `max_active_keys` yet? {{(pid=25117) load_keys /opt/stack/keystone/keystone/common/fernet_utils.py:289}}
+
+	devstack@keystone.service[25081]: DEBUG keystone.common.rbac_enforcer.enforcer [None req-3306113e-a07b-4bb2-b98b-a6ce182b9fe8 service glance] RBAC: Authorizing `identity:validate_token()` {{(pid=25117) enforce_call /opt/stack/keystone/keystone/common/rbac_enforcer/enforcer.py:386}}
+
+	keystone-wsgi-public[25117]: DEBUG keystone.common.rbac_enforcer.enforcer [None req-3306113e-a07b-4bb2-b98b-a6ce182b9fe8 service glance] RBAC: Authorizing `identity:validate_token()` {{(pid=25117) enforce_call /opt/stack/keystone/keystone/common/rbac_enforcer/enforcer.py:386}}
+
+	devstack@keystone.service[25081]: DEBUG keystone.common.rbac_enforcer.enforcer [None req-3306113e-a07b-4bb2-b98b-a6ce182b9fe8 service glance] RBAC: Authorization granted {{(pid=25117) enforce_call /opt/stack/keystone/keystone/common/rbac_enforcer/enforcer.py:393}}
+
+	keystone-wsgi-public[25117]: DEBUG keystone.common.rbac_enforcer.enforcer [None req-3306113e-a07b-4bb2-b98b-a6ce182b9fe8 service glance] RBAC: Authorization granted {{(pid=25117) enforce_call /opt/stack/keystone/keystone/common/rbac_enforcer/enforcer.py:393}}
+
+	devstack@keystone.service[25081]: DEBUG keystone.server.flask.request_processing.middleware.auth_context [None req-3306113e-a07b-4bb2-b98b-a6ce182b9fe8 service glance] Authenticating user token {{(pid=25117) process_request /usr/local/lib/python3.7/site-packages/keystonemiddleware/auth_token/__init__.py:399}}
+
+	keystone-wsgi-public[25117]: DEBUG keystone.server.flask.request_processing.middleware.auth_context [None req-3306113e-a07b-4bb2-b98b-a6ce182b9fe8 service glance] Authenticating user token {{(pid=25117) process_request /usr/local/lib/python3.7/site-packages/keystonemiddleware/auth_token/__init__.py:399}}

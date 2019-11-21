@@ -154,3 +154,6 @@ done
 sudo systemctl restart devstack@*
 
 sudo systemctl restart devstack@g-api.service
+
+# check log
+sudo journalctl -f -u devstack@h*
