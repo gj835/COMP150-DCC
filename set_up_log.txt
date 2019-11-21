@@ -99,6 +99,9 @@ from openstack_dashboard.contrib.developer.profiler import api as profiler
 
 sudo systemctl restart devstack@*
 
+export OSPROFILER_CONNECTION_STRING=redis://localhost:6379
+source devstack/openrc admin admin
+
 ##############################################################################
 install docker:
 sudo dnf -y install dnf-plugins-core

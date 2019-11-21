@@ -22,6 +22,12 @@ from glance.common import config
 from glance.common import store_utils
 from glance import notifier
 
+#gj835
+import logging as loggings
+import time
+from jaeger_client import Config as jaeger_config
+#gj835
+
 CONF = cfg.CONF
 CONF.import_group("profiler", "glance.common.wsgi")
 CONF.import_opt("enabled_backends", "glance.common.wsgi")
@@ -57,10 +63,10 @@ def _get_config_files(env=None):
 #gj835
 def init_tracer(service):
     log_level = logging.DEBUG
-    logging.getLogger('').handlers = []
-    logging.basicConfig(format='%(asctime)s %(message)s', level=log_level)
+    loggings.getLogger('').handlers = []
+    loggings.basicConfig(format='%(asctime)s %(message)s', level=log_level)
 
-    config = Config(
+    jaeger_config = jaeger_config(
         config={ # usually read from some yaml config
             'sampler': {
                 'type': 'const',
@@ -71,7 +77,7 @@ def init_tracer(service):
         service_name=service,
         validate=True,
     )
-    return config.initialize_tracer()
+    return jaeger_config.initialize_tracer()
 #gj835
 
 def _setup_os_profiler():
