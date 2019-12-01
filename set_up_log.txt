@@ -75,10 +75,11 @@ openstack --os-profile=SECRET_KEY image list
 openstack --os-profile Devstack1 image list
 
 glance --profile SECRET_KEY image-list
+
 glance --profile Devstack1 image-list
 
-osprofiler trace show --connection-string redis://127.0.0.1:6379 --html 1266d14b-5529-4aad-8b3b-ab9fbb5e6fa1
 osprofiler trace show --connection-string redis://127.0.0.1:6379 --html 
+
 ##############################################################################
 
 osprofiler trace list --connection-string jaeger://localhost:6831
@@ -156,4 +157,4 @@ sudo systemctl restart devstack@*
 sudo systemctl restart devstack@g-api.service
 
 # check log
-sudo journalctl -f -u devstack@h*
+sudo journalctl -f -u devstack@*
