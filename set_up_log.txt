@@ -155,12 +155,11 @@ do
     sudo $mypip install --force-reinstall --no-deps -U .
 done
 
+# restart devstack
 sudo systemctl restart devstack@*
-
 sudo systemctl restart devstack@g-api.service
 
 # check log
-sudo journalctl -f -u devstack@h*
 sudo journalctl -f -u devstack@*
 
 ##############################################################################
