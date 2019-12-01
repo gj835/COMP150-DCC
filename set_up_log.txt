@@ -18,7 +18,7 @@ echo "stack ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/stack
 sudo su - stack
 script /dev/null #solving the issue of screen can not initiate
 
-
+sudo /etc/init.d/ssh restart
 ##############################################################################
 # download devstack
 git clone https://opendev.org/openstack/devstack
@@ -60,7 +60,9 @@ export OS_PASSWORD="secret"
 export OS_REGION_NAME="RegionOne"
 export OS_INTERFACE=public
 export OS_IDENTITY_API_VERSION=3
-#export OSPROFILER_CONNECTION_STRING=redis://127.0.0.1:6379
+
+export OSPROFILER_CONNECTION_STRING=redis://127.0.0.1:6379
+
 export OSPROFILER_CONNECTION_STRING=jaeger://localhost:6831
 
 connection_string = jaeger://localhost:6831
@@ -157,3 +159,11 @@ sudo systemctl restart devstack@g-api.service
 
 # check log
 sudo journalctl -f -u devstack@h*
+
+##############################################################################
+sudo pip install jaeger_client
+sudo pip install openstack_opentracing
+vi /usr/local/lib/python3.5/dist-packages/openstack_opentracing/remote_sampler.py
+#######
+import httplib2
+#######
