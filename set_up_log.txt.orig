@@ -80,7 +80,6 @@ glance --profile SECRET_KEY image-list
 
 glance --profile Devstack1 image-list
 
-osprofiler trace show --connection-string redis://127.0.0.1:6379 --html 1266d14b-5529-4aad-8b3b-ab9fbb5e6fa1
 osprofiler trace show --connection-string redis://127.0.0.1:6379 --html 
 
 ##############################################################################
@@ -160,7 +159,6 @@ sudo systemctl restart devstack@*
 sudo systemctl restart devstack@g-api.service
 
 # check log
-sudo journalctl -f -u devstack@h*
 sudo journalctl -f -u devstack@*
 
 ##############################################################################
@@ -169,5 +167,4 @@ sudo pip install openstack_opentracing
 vi /usr/local/lib/python3.5/dist-packages/openstack_opentracing/remote_sampler.py
 #######
 import httplib2
-#######
 #######
