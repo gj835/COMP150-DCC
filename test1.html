@@ -104,8 +104,8 @@
     "info": {
         "name": "total",
         "started": 0,
-        "finished": 564,
-        "last_trace_started": 553
+        "finished": 611,
+        "last_trace_started": 577
     },
     "children": [
         {
@@ -114,12 +114,26 @@
                 "project": "keystone_profiler",
                 "service": "public",
                 "host": "devstack9",
+                "meta.raw_payload.wsgi-stop": {
+                    "name": "wsgi-stop",
+                    "base_id": "9ae0fa2f-4b7e-42d0-94e6-6fde26d6c203",
+                    "trace_id": "6bca9d0a-aff1-4af8-be4e-9f351e7c1209",
+                    "parent_id": "9ae0fa2f-4b7e-42d0-94e6-6fde26d6c203",
+                    "timestamp": "2019-11-22T04:34:46.748485",
+                    "info": {
+                        "host": "devstack9"
+                    },
+                    "project": "keystone_profiler",
+                    "service": "public"
+                },
+                "finished": 7,
+                "exception": "None",
                 "meta.raw_payload.wsgi-start": {
                     "name": "wsgi-start",
-                    "base_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
-                    "trace_id": "32958378-d8a0-4772-8880-897bde01252c",
-                    "parent_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
-                    "timestamp": "2019-11-21T03:39:43.426592",
+                    "base_id": "9ae0fa2f-4b7e-42d0-94e6-6fde26d6c203",
+                    "trace_id": "6bca9d0a-aff1-4af8-be4e-9f351e7c1209",
+                    "parent_id": "9ae0fa2f-4b7e-42d0-94e6-6fde26d6c203",
+                    "timestamp": "2019-11-22T04:34:46.740796",
                     "info": {
                         "request": {
                             "path": "/identity/",
@@ -129,30 +143,16 @@
                         },
                         "tracepoint_id": "/identity/:GET",
                         "host": "devstack9",
-                        "thread_id": 139736169881856,
-                        "pid": 25118
+                        "thread_id": 140484013412608,
+                        "pid": 12609
                     },
                     "project": "keystone_profiler",
                     "service": "public"
                 },
-                "started": 0,
-                "meta.raw_payload.wsgi-stop": {
-                    "name": "wsgi-stop",
-                    "base_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
-                    "trace_id": "32958378-d8a0-4772-8880-897bde01252c",
-                    "parent_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
-                    "timestamp": "2019-11-21T03:39:43.433072",
-                    "info": {
-                        "host": "devstack9"
-                    },
-                    "project": "keystone_profiler",
-                    "service": "public"
-                },
-                "finished": 6,
-                "exception": "None"
+                "started": 0
             },
-            "trace_id": "32958378-d8a0-4772-8880-897bde01252c",
-            "parent_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
+            "trace_id": "6bca9d0a-aff1-4af8-be4e-9f351e7c1209",
+            "parent_id": "9ae0fa2f-4b7e-42d0-94e6-6fde26d6c203",
             "tracepoint_id": "/identity/:GET",
             "children": []
         },
@@ -162,26 +162,12 @@
                 "project": "keystone_profiler",
                 "service": "public",
                 "host": "devstack9",
-                "meta.raw_payload.wsgi-stop": {
-                    "name": "wsgi-stop",
-                    "base_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
-                    "trace_id": "b56c4683-b5ec-4c89-9b34-de2cc0e5a381",
-                    "parent_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
-                    "timestamp": "2019-11-21T03:39:43.493975",
-                    "info": {
-                        "host": "devstack9"
-                    },
-                    "project": "keystone_profiler",
-                    "service": "public"
-                },
-                "finished": 67,
-                "exception": "None",
                 "meta.raw_payload.wsgi-start": {
                     "name": "wsgi-start",
-                    "base_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
-                    "trace_id": "b56c4683-b5ec-4c89-9b34-de2cc0e5a381",
-                    "parent_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
-                    "timestamp": "2019-11-21T03:39:43.440243",
+                    "base_id": "9ae0fa2f-4b7e-42d0-94e6-6fde26d6c203",
+                    "trace_id": "b5752738-03d1-4724-ac50-e59953729a62",
+                    "parent_id": "9ae0fa2f-4b7e-42d0-94e6-6fde26d6c203",
+                    "timestamp": "2019-11-22T04:34:46.756655",
                     "info": {
                         "request": {
                             "path": "/identity/v3/auth/tokens",
@@ -191,16 +177,30 @@
                         },
                         "tracepoint_id": "/identity/v3/auth/tokens:POST",
                         "host": "devstack9",
-                        "thread_id": 139736169881856,
-                        "pid": 25117
+                        "thread_id": 140484013412608,
+                        "pid": 12610
                     },
                     "project": "keystone_profiler",
                     "service": "public"
                 },
-                "started": 13
+                "started": 15,
+                "meta.raw_payload.wsgi-stop": {
+                    "name": "wsgi-stop",
+                    "base_id": "9ae0fa2f-4b7e-42d0-94e6-6fde26d6c203",
+                    "trace_id": "b5752738-03d1-4724-ac50-e59953729a62",
+                    "parent_id": "9ae0fa2f-4b7e-42d0-94e6-6fde26d6c203",
+                    "timestamp": "2019-11-22T04:34:46.831867",
+                    "info": {
+                        "host": "devstack9"
+                    },
+                    "project": "keystone_profiler",
+                    "service": "public"
+                },
+                "finished": 91,
+                "exception": "None"
             },
-            "trace_id": "b56c4683-b5ec-4c89-9b34-de2cc0e5a381",
-            "parent_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
+            "trace_id": "b5752738-03d1-4724-ac50-e59953729a62",
+            "parent_id": "9ae0fa2f-4b7e-42d0-94e6-6fde26d6c203",
             "tracepoint_id": "/identity/v3/auth/tokens:POST",
             "children": []
         },
@@ -212,24 +212,24 @@
                 "host": "devstack9",
                 "meta.raw_payload.wsgi-stop": {
                     "name": "wsgi-stop",
-                    "base_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
-                    "trace_id": "54f9f89c-ed45-4a20-a23a-451d96b64128",
-                    "parent_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
-                    "timestamp": "2019-11-21T03:39:43.967542",
+                    "base_id": "9ae0fa2f-4b7e-42d0-94e6-6fde26d6c203",
+                    "trace_id": "5475677c-af23-4cac-993b-b0d8ee30b418",
+                    "parent_id": "9ae0fa2f-4b7e-42d0-94e6-6fde26d6c203",
+                    "timestamp": "2019-11-22T04:34:47.277812",
                     "info": {
                         "host": "devstack9"
                     },
                     "project": "glance_wsgi_app",
                     "service": "api"
                 },
-                "finished": 540,
+                "finished": 537,
                 "exception": "None",
                 "meta.raw_payload.wsgi-start": {
                     "name": "wsgi-start",
-                    "base_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
-                    "trace_id": "54f9f89c-ed45-4a20-a23a-451d96b64128",
-                    "parent_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
-                    "timestamp": "2019-11-21T03:39:43.511513",
+                    "base_id": "9ae0fa2f-4b7e-42d0-94e6-6fde26d6c203",
+                    "trace_id": "5475677c-af23-4cac-993b-b0d8ee30b418",
+                    "parent_id": "9ae0fa2f-4b7e-42d0-94e6-6fde26d6c203",
+                    "timestamp": "2019-11-22T04:34:46.850131",
                     "info": {
                         "request": {
                             "path": "/v2/images",
@@ -239,16 +239,16 @@
                         },
                         "tracepoint_id": "/v2/images:GET",
                         "host": "devstack9",
-                        "thread_id": 139626929451264,
-                        "pid": 25120
+                        "thread_id": 139682747212032,
+                        "pid": 12598
                     },
                     "project": "glance_wsgi_app",
                     "service": "api"
                 },
-                "started": 84
+                "started": 109
             },
-            "trace_id": "54f9f89c-ed45-4a20-a23a-451d96b64128",
-            "parent_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
+            "trace_id": "5475677c-af23-4cac-993b-b0d8ee30b418",
+            "parent_id": "9ae0fa2f-4b7e-42d0-94e6-6fde26d6c203",
             "tracepoint_id": "/v2/images:GET",
             "children": [
                 {
@@ -259,24 +259,24 @@
                         "host": "devstack9",
                         "meta.raw_payload.wsgi-stop": {
                             "name": "wsgi-stop",
-                            "base_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
-                            "trace_id": "d5d10d2d-7d16-42f7-942f-cb6cfb5564a4",
-                            "parent_id": "54f9f89c-ed45-4a20-a23a-451d96b64128",
-                            "timestamp": "2019-11-21T03:39:43.531685",
+                            "base_id": "9ae0fa2f-4b7e-42d0-94e6-6fde26d6c203",
+                            "trace_id": "2932e717-4aff-49af-8db4-3b04f4e09ef0",
+                            "parent_id": "5475677c-af23-4cac-993b-b0d8ee30b418",
+                            "timestamp": "2019-11-22T04:34:46.873385",
                             "info": {
                                 "host": "devstack9"
                             },
                             "project": "keystone_profiler",
                             "service": "public"
                         },
-                        "finished": 105,
+                        "finished": 132,
                         "exception": "None",
                         "meta.raw_payload.wsgi-start": {
                             "name": "wsgi-start",
-                            "base_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
-                            "trace_id": "d5d10d2d-7d16-42f7-942f-cb6cfb5564a4",
-                            "parent_id": "54f9f89c-ed45-4a20-a23a-451d96b64128",
-                            "timestamp": "2019-11-21T03:39:43.527601",
+                            "base_id": "9ae0fa2f-4b7e-42d0-94e6-6fde26d6c203",
+                            "trace_id": "2932e717-4aff-49af-8db4-3b04f4e09ef0",
+                            "parent_id": "5475677c-af23-4cac-993b-b0d8ee30b418",
+                            "timestamp": "2019-11-22T04:34:46.866616",
                             "info": {
                                 "request": {
                                     "path": "/identity/",
@@ -286,16 +286,16 @@
                                 },
                                 "tracepoint_id": "/identity/:GET",
                                 "host": "devstack9",
-                                "thread_id": 139736169881856,
-                                "pid": 25118
+                                "thread_id": 140484013412608,
+                                "pid": 12609
                             },
                             "project": "keystone_profiler",
                             "service": "public"
                         },
-                        "started": 101
+                        "started": 125
                     },
-                    "trace_id": "d5d10d2d-7d16-42f7-942f-cb6cfb5564a4",
-                    "parent_id": "54f9f89c-ed45-4a20-a23a-451d96b64128",
+                    "trace_id": "2932e717-4aff-49af-8db4-3b04f4e09ef0",
+                    "parent_id": "5475677c-af23-4cac-993b-b0d8ee30b418",
                     "tracepoint_id": "/identity/:GET",
                     "children": []
                 },
@@ -307,10 +307,10 @@
                         "host": "devstack9",
                         "meta.raw_payload.wsgi-start": {
                             "name": "wsgi-start",
-                            "base_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
-                            "trace_id": "f6ba823d-36c3-46ff-b239-7bf18efe9847",
-                            "parent_id": "54f9f89c-ed45-4a20-a23a-451d96b64128",
-                            "timestamp": "2019-11-21T03:39:43.539343",
+                            "base_id": "9ae0fa2f-4b7e-42d0-94e6-6fde26d6c203",
+                            "trace_id": "663916c3-f3a3-4d8a-a4a2-595d98e10efe",
+                            "parent_id": "5475677c-af23-4cac-993b-b0d8ee30b418",
+                            "timestamp": "2019-11-22T04:34:46.885319",
                             "info": {
                                 "request": {
                                     "path": "/identity/v3/auth/tokens",
@@ -320,30 +320,30 @@
                                 },
                                 "tracepoint_id": "/identity/v3/auth/tokens:POST",
                                 "host": "devstack9",
-                                "thread_id": 139736169881856,
-                                "pid": 25117
+                                "thread_id": 140484013412608,
+                                "pid": 12610
                             },
                             "project": "keystone_profiler",
                             "service": "public"
                         },
-                        "started": 112,
+                        "started": 144,
                         "meta.raw_payload.wsgi-stop": {
                             "name": "wsgi-stop",
-                            "base_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
-                            "trace_id": "f6ba823d-36c3-46ff-b239-7bf18efe9847",
-                            "parent_id": "54f9f89c-ed45-4a20-a23a-451d96b64128",
-                            "timestamp": "2019-11-21T03:39:43.736575",
+                            "base_id": "9ae0fa2f-4b7e-42d0-94e6-6fde26d6c203",
+                            "trace_id": "663916c3-f3a3-4d8a-a4a2-595d98e10efe",
+                            "parent_id": "5475677c-af23-4cac-993b-b0d8ee30b418",
+                            "timestamp": "2019-11-22T04:34:46.960577",
                             "info": {
                                 "host": "devstack9"
                             },
                             "project": "keystone_profiler",
                             "service": "public"
                         },
-                        "finished": 309,
+                        "finished": 219,
                         "exception": "None"
                     },
-                    "trace_id": "f6ba823d-36c3-46ff-b239-7bf18efe9847",
-                    "parent_id": "54f9f89c-ed45-4a20-a23a-451d96b64128",
+                    "trace_id": "663916c3-f3a3-4d8a-a4a2-595d98e10efe",
+                    "parent_id": "5475677c-af23-4cac-993b-b0d8ee30b418",
                     "tracepoint_id": "/identity/v3/auth/tokens:POST",
                     "children": []
                 },
@@ -353,12 +353,26 @@
                         "project": "keystone_profiler",
                         "service": "public",
                         "host": "devstack9",
+                        "meta.raw_payload.wsgi-stop": {
+                            "name": "wsgi-stop",
+                            "base_id": "9ae0fa2f-4b7e-42d0-94e6-6fde26d6c203",
+                            "trace_id": "ceefa881-0711-4e37-8b8d-720c167ff3c9",
+                            "parent_id": "5475677c-af23-4cac-993b-b0d8ee30b418",
+                            "timestamp": "2019-11-22T04:34:47.064036",
+                            "info": {
+                                "host": "devstack9"
+                            },
+                            "project": "keystone_profiler",
+                            "service": "public"
+                        },
+                        "finished": 323,
+                        "exception": "None",
                         "meta.raw_payload.wsgi-start": {
                             "name": "wsgi-start",
-                            "base_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
-                            "trace_id": "59fb1bda-3020-433f-b10d-98752991a514",
-                            "parent_id": "54f9f89c-ed45-4a20-a23a-451d96b64128",
-                            "timestamp": "2019-11-21T03:39:43.748826",
+                            "base_id": "9ae0fa2f-4b7e-42d0-94e6-6fde26d6c203",
+                            "trace_id": "ceefa881-0711-4e37-8b8d-720c167ff3c9",
+                            "parent_id": "5475677c-af23-4cac-993b-b0d8ee30b418",
+                            "timestamp": "2019-11-22T04:34:46.978005",
                             "info": {
                                 "request": {
                                     "path": "/identity/v3/auth/tokens",
@@ -368,30 +382,16 @@
                                 },
                                 "tracepoint_id": "/identity/v3/auth/tokens:GET",
                                 "host": "devstack9",
-                                "thread_id": 139736169881856,
-                                "pid": 25118
+                                "thread_id": 140484013412608,
+                                "pid": 12609
                             },
                             "project": "keystone_profiler",
                             "service": "public"
                         },
-                        "started": 322,
-                        "meta.raw_payload.wsgi-stop": {
-                            "name": "wsgi-stop",
-                            "base_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
-                            "trace_id": "59fb1bda-3020-433f-b10d-98752991a514",
-                            "parent_id": "54f9f89c-ed45-4a20-a23a-451d96b64128",
-                            "timestamp": "2019-11-21T03:39:43.812402",
-                            "info": {
-                                "host": "devstack9"
-                            },
-                            "project": "keystone_profiler",
-                            "service": "public"
-                        },
-                        "finished": 385,
-                        "exception": "None"
+                        "started": 237
                     },
-                    "trace_id": "59fb1bda-3020-433f-b10d-98752991a514",
-                    "parent_id": "54f9f89c-ed45-4a20-a23a-451d96b64128",
+                    "trace_id": "ceefa881-0711-4e37-8b8d-720c167ff3c9",
+                    "parent_id": "5475677c-af23-4cac-993b-b0d8ee30b418",
                     "tracepoint_id": "/identity/v3/auth/tokens:GET",
                     "children": []
                 }
@@ -403,12 +403,26 @@
                 "project": "glance_wsgi_app",
                 "service": "api",
                 "host": "devstack9",
+                "meta.raw_payload.wsgi-stop": {
+                    "name": "wsgi-stop",
+                    "base_id": "9ae0fa2f-4b7e-42d0-94e6-6fde26d6c203",
+                    "trace_id": "47427251-9838-4d69-9a31-42873e991b08",
+                    "parent_id": "9ae0fa2f-4b7e-42d0-94e6-6fde26d6c203",
+                    "timestamp": "2019-11-22T04:34:47.352022",
+                    "info": {
+                        "host": "devstack9"
+                    },
+                    "project": "glance_wsgi_app",
+                    "service": "api"
+                },
+                "finished": 611,
+                "exception": "None",
                 "meta.raw_payload.wsgi-start": {
                     "name": "wsgi-start",
-                    "base_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
-                    "trace_id": "c8d07ae2-9d8a-4ee2-a88d-46c429713495",
-                    "parent_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
-                    "timestamp": "2019-11-21T03:39:43.979958",
+                    "base_id": "9ae0fa2f-4b7e-42d0-94e6-6fde26d6c203",
+                    "trace_id": "47427251-9838-4d69-9a31-42873e991b08",
+                    "parent_id": "9ae0fa2f-4b7e-42d0-94e6-6fde26d6c203",
+                    "timestamp": "2019-11-22T04:34:47.318398",
                     "info": {
                         "request": {
                             "path": "/v2/schemas/image",
@@ -418,30 +432,16 @@
                         },
                         "tracepoint_id": "/v2/schemas/image:GET",
                         "host": "devstack9",
-                        "thread_id": 139626929451264,
-                        "pid": 25119
+                        "thread_id": 139682747212032,
+                        "pid": 12599
                     },
                     "project": "glance_wsgi_app",
                     "service": "api"
                 },
-                "started": 553,
-                "meta.raw_payload.wsgi-stop": {
-                    "name": "wsgi-stop",
-                    "base_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
-                    "trace_id": "c8d07ae2-9d8a-4ee2-a88d-46c429713495",
-                    "parent_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
-                    "timestamp": "2019-11-21T03:39:43.990600",
-                    "info": {
-                        "host": "devstack9"
-                    },
-                    "project": "glance_wsgi_app",
-                    "service": "api"
-                },
-                "finished": 564,
-                "exception": "None"
+                "started": 577
             },
-            "trace_id": "c8d07ae2-9d8a-4ee2-a88d-46c429713495",
-            "parent_id": "4480c0f5-d3a7-4bd6-a985-95aa2ce25f34",
+            "trace_id": "47427251-9838-4d69-9a31-42873e991b08",
+            "parent_id": "9ae0fa2f-4b7e-42d0-94e6-6fde26d6c203",
             "tracepoint_id": "/v2/schemas/image:GET",
             "children": []
         }
@@ -449,7 +449,7 @@
     "stats": {
         "wsgi": {
             "count": 7,
-            "duration": 791
+            "duration": 713
         }
     }
 };
