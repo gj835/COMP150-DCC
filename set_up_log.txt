@@ -44,7 +44,7 @@ OSPROFILER_HMAC_KEYS=SECRET_KEY
 
 ##############################################################################
 # start installation
-./stack.sh > ~/devstack_jaeger_jager.log 2>&1
+./stack.sh > ~/devstack_redis_installation.log 2>&1
 tail -f ~/devstack_jaeger_jager.log
 
 ##############################################################################
@@ -156,4 +156,4 @@ sudo systemctl restart devstack@*
 sudo systemctl restart devstack@g-api.service
 
 # check log
-sudo journalctl -f -u devstack@h*
+sudo journalctl -f -u devstack@*
