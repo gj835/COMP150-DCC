@@ -1,4 +1,4 @@
-°##############################################################################
+##############################################################################
 ip address:
 devstack4
 128.31.24.139
@@ -159,6 +159,7 @@ done
 sudo systemctl restart devstack@*
 sudo systemctl restart devstack@g-api.service
 
+##############################################################################
 # check log
 sudo journalctl -f -u devstack@*
 
@@ -168,5 +169,4 @@ sudo pip install openstack_opentracing
 vi /usr/local/lib/python3.5/dist-packages/openstack_opentracing/remote_sampler.py
 #######
 import httplib2
-#######
 #######
