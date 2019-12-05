@@ -1,10 +1,17 @@
 ##############################################################################
 ip address:
-devstack4
+devstack10
 128.31.24.139
 
-devstack3
+devstack11
 128.31.24.137
+
+benedict_devstack-2
+128.31.24.157
+
+benedict_devstack-1
+128.31.24.215
+
 ##############################################################################
 #set up public key
 ssh-keygen -y -f ~/.ssh/mocjingan3.pem > ~/.ssh/mocjingan3.pub
@@ -164,6 +171,8 @@ sudo systemctl restart devstack@g-api.service
 sudo journalctl -f -u devstack@*
 
 ##############################################################################
+url: https://github.com/platform9/openstack-opentracing
+
 sudo pip install jaeger_client
 sudo pip install openstack_opentracing
 vi /usr/local/lib/python3.5/dist-packages/openstack_opentracing/remote_sampler.py
