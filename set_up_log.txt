@@ -14,8 +14,8 @@ benedict_devstack-1
 
 ##############################################################################
 #set up public key
-ssh-keygen -y -f ~/.ssh/mocjingan3.pem > ~/.ssh/mocjingan3.pub
-ssh-add -K ~/.ssh/mocjingan3.pem
+ssh-keygen -y -f ~/.ssh/mocjingan4.pem > ~/.ssh/mocjingan4.pub
+ssh-add -K ~/.ssh/mocjingan4.pem
 
 ##############################################################################
 #set up a new envoriment:
@@ -30,6 +30,7 @@ sudo /etc/init.d/ssh restart
 # download devstack
 git clone https://opendev.org/openstack/devstack
 cd devstack
+git checkout stable/pike
 
 # create local.conf
 vi local.conf
@@ -51,7 +52,9 @@ OSPROFILER_HMAC_KEYS=SECRET_KEY
 
 ##############################################################################
 # start installation
-./stack.sh > ~/devstack_jaeger_jager.log 2>&1
+
+./stack.sh > ~/install_jaeger.log 2>&1
+
 tail -f ~/devstack_jaeger_jager.log
 
 ##############################################################################
@@ -181,3 +184,21 @@ vi /usr/local/lib/python3.5/dist-packages/openstack_opentracing/remote_sampler.p
 #######
 import httplib2
 #######
+
+##############################################################################
+[[local|localrc]]
+ADMIN_PASSWORD=secret
+DATABASE_PASSWORD=$ADMIN_PASSWORD
+RABBIT_PASSWORD=$ADMIN_PASSWORD
+SERVICE_PASSWORD=$ADMIN_PASSWORD
+
+#enable_plugin panko https://git.openstack.org/openstack/panko
+#enable_plugin ceilometer https://git.openstack.org/openstack/ceilometer
+#enable_plugin osprofiler https://git.openstack.org/openstack/osprofiler
+
+enable_plugin osprofiler https://opendev.org/openstack/osprofiler master
+OSPROFILER_COLLECTOR=jaeger
+OSPROFILER_CONNECTION_STRING=jaeger://localhost:6831
+OSPROFILER_TRACE_SQLALCHEMY=False
+OSPROFILER_HMAC_KEYS=SECRET_KEY
+##############################################################################
