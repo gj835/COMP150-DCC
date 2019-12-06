@@ -165,10 +165,12 @@ done
 # restart devstack
 sudo systemctl restart devstack@*
 sudo systemctl restart devstack@g-api.service
+sudo systemctl restart devstack@n-api.service
 
 ##############################################################################
 # check log
 sudo journalctl -f -u devstack@*
+sudo journalctl -f -u devstack@n-api.service
 
 ##############################################################################
 url: https://github.com/platform9/openstack-opentracing
