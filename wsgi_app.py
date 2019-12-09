@@ -14,7 +14,7 @@ import os
 
 import glance_store
 from oslo_config import cfg
-from oslo_log import log as logging
+
 import osprofiler.initializer
 
 from glance.common import config
@@ -24,8 +24,9 @@ from glance import notifier
 from openstack_opentracing import jaeger_middleware
 from opentracing_instrumentation.request_context import span_in_stack_context
 
+from oslo_log import log as logging
 LOG = logging.getLogger(__name__)
-LOG.debug('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
+LOG.debug('gj835')
 
 import logging as loggings
 import time
